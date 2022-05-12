@@ -21,7 +21,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
         with:
-          submodules: recursive
+          token: ${{ secrets.RUNNER_ACCESS_TOKEN }}
+          submodules: true
       - uses: docker/login-action@v1
         with:
           registry: ${{secrets.REMOTE_HOST}}
