@@ -35,4 +35,4 @@ jobs:
               
       - name: execute py script # run the run.py to get the latest data
         run: 
-          python deploy.py
+          python deploy.py -v
