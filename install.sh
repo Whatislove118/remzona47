@@ -4,7 +4,7 @@ apt-get install iptables-persistent -y
 docker pull registry
 mkidr /var/lib/docker/registry-repo
 
-# Auth # master L1TF99qv
+# Auth
 apt-get install apache2-utils -y
 mkdir /etc/docker/auth
 htpasswd -Bbn username password > /etc/docker/auth/htpasswd
