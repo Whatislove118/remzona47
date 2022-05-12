@@ -40,7 +40,7 @@ if __name__ == "__main__":
 
     Settings.Verbose = args.verbose
     
-    cmd = f'docker build -t {ContainersName.CRM_BACKEND} . --file remzona47-crm/Dockerfile'
+    cmd = f'docker build -t {ContainersName.CRM_BACKEND} remzona47-crm --file remzona47-crm/Dockerfile'
     Run(cmd)
 
     cmd = f'docker push {ContainersName.CRM_BACKEND}'
