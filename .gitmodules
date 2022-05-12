@@ -1,3 +1,6 @@
 [submodule "remzona47-crm"]
 	path = remzona47-crm
 	url = https://github.com/Whatislove118/remzona47-crm.git
+[submodule "SpringServer"]
+	path = SpringServer
+	url = https://github.com/stavatar/SpringServer.git
