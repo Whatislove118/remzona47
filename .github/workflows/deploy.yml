@@ -36,4 +36,4 @@ jobs:
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
       - name: execute deploy script
         run: 
-          python deploy.py
+          python deploy.py -v
