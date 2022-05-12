@@ -34,7 +34,7 @@ def Run(cmd):
         raise RuntimeError(f"Failed to run '{cmd}'")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="WebUsd build tool", allow_abbrev=False)
+    parser = argparse.ArgumentParser(description="Build tool", allow_abbrev=False)
     parser.add_argument('-v', '--verbose', help="Verbose output", action='store_true')
     args = parser.parse_args()
 
