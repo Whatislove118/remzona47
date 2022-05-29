@@ -4,7 +4,7 @@ import argparse
 import sys
 import os
 
-REMOTE_HOST = os.getenv("REMOTE_HOST", "localhost:5000")
+REMOTE_HOST = os.getenv("REMOTE_HOST")
 
 class ContainersName:
     CRM_BACKEND = f"{REMOTE_HOST}/crm.backend"
