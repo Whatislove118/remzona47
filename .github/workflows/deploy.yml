@@ -45,14 +45,11 @@ jobs:
     steps:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
-        env:
-          COMPOSE_PATH: ${{ secrets.COMPOSE_PATH }}
         with:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USERNAME }}
           password: ${{ secrets.REMOTE_PASSWORD }}
           port: 22
-          envs: COMPOSE_PATH
           script: |
-            docker-compose -f $COMPOSE_PATH pull
-            docker-compose -f $COMPOSE_PATH up -d
+            docker-compose -f ${{ secrets.COMPOSE_PATH }} pull
+            docker-compose -f ${{ secrets.COMPOSE_PATH }} up -d
