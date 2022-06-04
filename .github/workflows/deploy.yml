@@ -25,7 +25,7 @@ jobs:
           submodules: true
       - uses: docker/login-action@v1
         with:
-          registry: ${{secrets.REMOTE_HOST}}
+          registry: ${{ secrets.DOCKER_HOST }}
           username: ${{ secrets.DOCKER_USERNAME  }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: setup python            
@@ -37,3 +37,22 @@ jobs:
       - name: execute deploy script
         run: 
           python deploy.py -v
+  cd:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        env:
+          COMPOSE_PATH: ${{ secrets.COMPOSE_PATH }}
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          port: 22
+          envs: COMPOSE_PATH
+          script: |
+            docker-compose -f $COMPOSE_PATH pull
+            docker-compose -f $COMPOSE_PATH up -d
