@@ -43,12 +43,12 @@ if __name__ == "__main__":
     
     cmd = f'docker build -t {ContainersName.CRM_BACKEND} remzona47-crm --file remzona47-crm/Dockerfile'
     Run(cmd)
-    cmd = f'docker build -t {ContainersName.SPRING_SERVER} SpringServer --file SpringServer/Dockerfile'
-    Run(cmd)
+    #cmd = f'docker build -t {ContainersName.SPRING_SERVER} SpringServer --file SpringServer/Dockerfile'
+    #Run(cmd)
     
     
     cmd = f'docker push {ContainersName.CRM_BACKEND}'
     Run(cmd)
-    cmd = f'docker push {ContainersName.SPRING_SERVER}'
-    Run(cmd)
+    #cmd = f'docker push {ContainersName.SPRING_SERVER}'
+    #Run(cmd)
     
