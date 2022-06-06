@@ -42,5 +42,6 @@ if __name__ == "__main__":
     
     cmd = f'docker build -t {ContainersName.CRM_BACKEND} remzona47-crm --file remzona47-crm/Dockerfile'
     Run(cmd)
+    Run("docker images")
 
     cmd = f'docker push {ContainersName.CRM_BACKEND}'
