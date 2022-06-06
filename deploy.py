@@ -9,6 +9,7 @@ REMOTE_HOST = os.getenv("REMOTE_HOST", "docker.whatislove118.xyz")
 class ContainersName:
     CRM_BACKEND = f"{REMOTE_HOST}/crm.backend"
     CRM_FRONTEND = f"{REMOTE_HOST}/crm.frontend"
+    SPRING_SERVER = f"{REMOTE_HOST}/spring-server"
 
 class Settings:
     Verbose = False
@@ -42,5 +43,12 @@ if __name__ == "__main__":
     
     cmd = f'docker build -t {ContainersName.CRM_BACKEND} remzona47-crm --file remzona47-crm/Dockerfile'
     Run(cmd)
-
+    cmd = f'docker build -t {ContainersName.SPRING_SERVER} SpringServer --file SpringServer/Dockerfile'
+    Run(cmd)
+    
+    
     cmd = f'docker push {ContainersName.CRM_BACKEND}'
+    Run(cmd)
+    cmd = f'docker push {ContainersName.SPRING_SERVER}'
+    Run(cmd)
+    
