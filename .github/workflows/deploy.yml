@@ -14,7 +14,7 @@ jobs:
   # This workflow contains a single job called "build"
   ci:
     # The type of runner that the job will run on
-    runs-on: remzona-runner
+    runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -39,20 +39,17 @@ jobs:
           python deploy.py -v
   cd:
     # The type of runner that the job will run on
-    runs-on: remzona-runner
+    runs-on: ubuntu-latest
     needs: ci
-    
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: docker-login
-      - uses: docker/login-action@v1
+      - uses: appleboy/ssh-action@master
         with:
-          registry: ${{ secrets.DOCKER_HOST }}
-          username: ${{ secrets.DOCKER_USERNAME  }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: pull and up
-        run: |
-          docker-compose -f ${{ secrets.COMPOSE_PATH }} pull
-          docker-compose -f ${{ secrets.COMPOSE_PATH }} up -d
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USERNAME }}
+          password: ${{ secrets.REMOTE_PASSWORD }}
+          port: 22
+          script: |
+            docker-compose -f ${{ secrets.COMPOSE_PATH }} pull
+            docker-compose -f ${{ secrets.COMPOSE_PATH }} up -d
       
         
